@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/driver/BRILLIANCE/Brilliance_V3/Brilliance_V31952.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/driver/BRILLIANCE/Brilliance_V3/Brilliance_V32764.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/driver/BRILLIANCE/Brilliance_V3/Brilliance_V32765.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/driver/CHERY/Chery_Tiggo_4/Chery_Tiggo_44400.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/driver/CHERY/Chery_Tiggo_7_Pro/Chery_Tiggo_7_Pro4709.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/driver/KIA/Kia_Rio/Kia_Rio.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/driver/KIA/RIO.json" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/driver/SKODA/Skoda_Octavia/Skoda_Octavia.json" charset="windows-1251" />
+  </component>
+</project>
