@@ -10,6 +10,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from transliterate import translit
 
 # Create a Service object with the path to the Chrome driver executable
 service = Service('C:\\Users\\User\\PycharmProjects\\scrapy\\driver\\chromedriver.exe')
@@ -348,19 +349,21 @@ def change_model_name():
     for brand in brands:
         models = [x for x in os.listdir(brand) if "." not in x]
         for model in models:
-            os.rename(f"{brand}/{model}", f"{brand}/{model.title().replace(' ', '_')}")
+            folder_name = translit(model, 'ru', reversed=True).replace(" ", "_").lower()
+            os.rename(f"{brand}/{model}", f"{brand}/{folder_name}")
 
 
 # нужно открыть папку с моделями авто и переименовать файлы в нижний регистр например kia_sorento.json
 def change_file_name():
     brands = [x for x in os.listdir() if "." not in x]
     for brand in brands:
-        models = [x for x in os.listdir(brand) if "." not in x]
+        models = [x.title() for x in os.listdir(brand) if "." not in x]
         for model in models:
             files = [x for x in os.listdir(f"{brand}/{model}")]
             for file in files:
                 # нужно убрать пробелы в названии файла и переименовать в нижний регистр например kia_sorento.json, kia_sorento0.jpg
-                os.rename(f"{brand}/{model}/{file}", f"{brand}/{model}/{file.lower().replace(' ', '_')}")
+                filename = translit(file, 'ru', reversed=True).replace(' ', '_').lower()
+                os.rename(f"{brand}/{model}/{file}", f"{brand}/{model}/{filename}")
 
 
 # пример надо открыть папку с моделями авто там есть json файлы и папки с картинками нужно открыть json файл и в нем поменять название папки с картинками нижний регистр
@@ -377,8 +380,8 @@ def change_json():
                             data = json.load(f)
                         result = []
                         for image in data["auto"]["images"]:
-                            b = image.split("/")[0].replace(" ", "_").upper()
-                            m = image.split("/")[1].replace(" ", "_").title()
+                            b = brand.upper()
+                            m = model.lower()
                             i = image.split("/")[2].replace(" ", "_").lower()
                             path = f"{b}/{m}/{i}"
                             result.append(path)
@@ -399,6 +402,11 @@ if __name__ == '__main__':
     # collect_url_cars()
     # collect_car_info_json()
     # time.sleep(15)
+    # change_json()
+    change_name()
+    change_model_name()
+    change_file_name()
     change_json()
+
 # collect_car_info_json('https://franko-auto.ru/cars/chery/tiggo_4/4146')
 # get_car_by_brand()
